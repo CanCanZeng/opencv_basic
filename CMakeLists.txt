@@ -1,6 +1,8 @@
 #声明要求的 cmake 最低版本
 cmake_minimum_required( VERSION 2.8 )
 
+project(opencv_basics)
+
 # 添加 c++11 标准支持
 set( CMAKE_CXX_FLAGS "-std=c++11" )
 
@@ -34,7 +36,9 @@ find_package( CSparse REQUIRED )
 include_directories( ${CSPARSE_INCLUDE_DIR} )
 include_directories( ${EIGEN3_INCLUDE_DIR} )
 
-include_directories( ${PROJECT_SOURCE_DIR}/ceres )
+#include_directories( ${PROJECT_SOURCE_DIR}/ceres )
+
+set( SRC_PATH ${PROJECT_SOURCE_DIR}/src )
 
 #add_executable( image_basics image_basics.cpp )
 #target_link_libraries( image_basics ${OpenCV_LIBS} )
@@ -42,11 +46,11 @@ include_directories( ${PROJECT_SOURCE_DIR}/ceres )
 #add_executable( test_solve_pnp testSolvePnp.cpp)
 #target_link_libraries( test_solve_pnp ${OpenCV_LIBS} )
 
-#add_executable( opencv_viz_basic opencv_viz_basic.cpp )
-#target_link_libraries( opencv_viz_basic ${OpenCV_LIBS} )
+add_executable( opencv_viz_basic ${SRC_PATH}/opencv_viz_basic.cpp )
+target_link_libraries( opencv_viz_basic ${OpenCV_LIBS} )
 
-add_executable( opencv_kalmanfilter ${PROJECT_SOURCE_DIR}/src/opencv_kalmanfilter.cpp )
-target_link_libraries( opencv_kalmanfilter ${OpenCV_LIBS} )
+#add_executable( opencv_kalmanfilter ${PROJECT_SOURCE_DIR}/src/opencv_kalmanfilter.cpp )
+#target_link_libraries( opencv_kalmanfilter ${OpenCV_LIBS} )
 
-add_executable( deepar_g2o_kalmanfilter ${PROJECT_SOURCE_DIR}/src/deepar_g2o_kalmanfilter.cpp )
-target_link_libraries( deepar_g2o_kalmanfilter ${OpenCV_LIBS} )
+#add_executable( deepar_g2o_kalmanfilter ${PROJECT_SOURCE_DIR}/src/deepar_g2o_kalmanfilter.cpp )
+#target_link_libraries( deepar_g2o_kalmanfilter ${OpenCV_LIBS} )
